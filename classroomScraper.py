@@ -152,4 +152,17 @@ def log_error(e):
     """
     print(e)
 
+def get_all_classroom_data(url):
+    """
+    Collects all of the classroom data.
+    """
+    for prefix in subjects:
+        url = url + "/" + prefix
+        html_data = get_all_html_content_from_url(url)
+        extract_data_from_html(html_data)
 
+def extract_data_from_html(html_data):
+    """
+    Extract the necessary data from the html.
+    """
+    html = BeautifulSoup(html_data, 'html.parser')
